@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Domain.Basket>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Track.TrackName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasketNr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pars)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Track.TrackName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BasketNr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pars)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BasketId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BasketId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BasketId })
+        </td>
+    </tr>
+}
+
+</table>

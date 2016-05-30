@@ -1,0 +1,39 @@
+﻿@model Web.Areas.Admin.ViewModels.PlayerInGamesViewModel
+
+@{
+    ViewBag.Title = @Resources.Common.Delete;
+}
+
+<h2>@Resources.Common.Delete</h2>
+
+<h3>@Resources.Common.DeleteConfirm</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayerInGame.Game.GameName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlayerInGame.Game.GameName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayerInGame.User.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlayerInGame.User.UserName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.PlayerInGame.PlayerInGameId)
+        <div class="form-actions no-color">
+            <input type="submit" value= @Resources.Common.Delete class="btn btn-default"/> |
+            @Html.ActionLink(@Resources.Common.BackToList, "Index")
+        </div>
+    }
+</div>

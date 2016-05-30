@@ -1,0 +1,41 @@
+﻿@model Web.Areas.Admin.ViewModels.GamesViewModel
+
+@{
+    ViewBag.Title = @Resources.Common.Details;
+}
+
+<h2>@Resources.Common.Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.Track.TrackName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.Track.TrackName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.GameName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.GameName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(@Resources.Common.Edit, "Edit", new { id = Model.Game.GameId }) |
+    @Html.ActionLink(@Resources.Common.BackToList, "Index")
+</p>

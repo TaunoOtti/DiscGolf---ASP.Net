@@ -1,0 +1,45 @@
+﻿@model Web.Areas.Admin.ViewModels.GamesIndexViewModel
+
+@{
+    ViewBag.Title = @Resources.Domain.Games;
+}
+
+<h2>@Resources.Domain.Games</h2>
+
+<p>
+    @Html.ActionLink(@Resources.Common.CreateNew, "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Game.GameName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game.Track.TrackName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game.Date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Games) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Track.TrackName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.ActionLink(@Resources.Common.Edit, "Edit", new {id = item.GameId}) |
+            @Html.ActionLink(@Resources.Common.Details, "Details", new {id = item.GameId}) |
+            @Html.ActionLink(@Resources.Common.Delete, "Delete", new {id = item.GameId})
+        </td>
+    </tr>
+}
+
+</table>

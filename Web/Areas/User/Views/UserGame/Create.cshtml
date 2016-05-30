@@ -1,0 +1,80 @@
+﻿@using HtmlHelpers
+@model Web.Areas.User.ViewModels.UserGameViewModel
+@{
+    ViewBag.Title = @Resources.Common.Create;
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Game</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Game.GameName, @Resources.Domain.GameName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Game.GameName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Game.GameName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Game.Date, @Resources.Domain.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DateTimeEditorFor(model => model.Game.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Game.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Game.TrackId, @Resources.Domain.TrackName, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Game.TrackId, Model.Tracks, @Resources.Common.SelectOptionLabel, htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Game.TrackId, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserListBoxId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(model => model.UserListBoxId, Model.UsersMultiList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserListBoxId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.UserInt.Id, @Resources.Domain.TrackName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.UserInt.Id, Model.Users, @Resources.Common.SelectOptionLabel, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserInt.Id, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        @*<ul class="list-group col-md-4">
+            @if(Model.UsersList != null) { 
+            foreach (var per in Model.UsersList)
+            {
+                <li class="list-group-item">@Html.DisplayFor(modelItem => per.UserName)</li>
+            }
+            }
+        </ul>*@
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value=@Resources.Common.Create class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+@*@Html.Partial("GamePlayers", Model)*@
+<div>
+    @Html.ActionLink(@Resources.Common.BackToList, "Index")
+</div>

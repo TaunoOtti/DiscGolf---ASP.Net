@@ -1,0 +1,33 @@
+﻿@model Domain.PlayerInGame
+
+@{
+    ViewBag.Title = @Resources.Common.Details;
+}
+
+<h2>@Resources.Common.Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.GameName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.GameName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(@Resources.Common.Edit, "Edit", new { id = Model.PlayerInGameId}) |
+    @Html.ActionLink(@Resources.Common.BackToList, "Index")
+</p>

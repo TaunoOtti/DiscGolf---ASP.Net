@@ -1,0 +1,44 @@
+﻿@model Web.Areas.Admin.ViewModels.BasketsViewModel
+@{
+    ViewBag.Title = "_CreateEdit";
+}
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Basket.BasketNr, @Resources.Domain.BasketNr, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Basket.BasketNr, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Basket.BasketNr, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Basket.Distance, @Resources.Domain.Distance, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Basket.Distance, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Basket.Distance, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Basket.Pars, @Resources.Domain.Pars, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Basket.Pars, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Basket.Pars, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Basket.Comment, @Resources.Domain.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Basket.Comment, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Basket.Comment, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Basket.TrackId, @Resources.Domain.TrackName, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(model => model.Basket.TrackId, Model.TrackSelectList, @Resources.Common.SelectOptionLabel, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Basket.TrackId, "", new { @class = "text-danger" })
+    </div>
+</div>

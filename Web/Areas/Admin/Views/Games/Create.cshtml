@@ -1,0 +1,33 @@
+﻿@using HtmlHelpers
+@model Web.Areas.Admin.ViewModels.GamesViewModel
+
+@{
+    ViewBag.Title = @Resources.Common.Create;
+}
+
+<h2>@Resources.Common.Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.Partial("_CreateEdit", Model)
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value= @Resources.Common.ButtonAdd class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+}
+
+<div>
+    @Html.ActionLink(@Resources.Common.BackToList, "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,33 @@
+﻿@model Web.Areas.Admin.ViewModels.TracksViewModel
+
+@{
+    ViewBag.Title = @Resources.Common.Details;
+}
+
+<h2>@Resources.Common.Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Track.TrackName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Track.TrackName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Track.TrackLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Track.TrackLocation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(@Resources.Common.Edit, "Edit", new { id = Model.Track.TrackId }) |
+    @Html.ActionLink(@Resources.Common.BackToList, "Index")
+</p>

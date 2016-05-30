@@ -1,0 +1,33 @@
+﻿@using HtmlHelpers
+@using Web.Helpers
+@model Web.Areas.Admin.ViewModels.GamesViewModel
+@{
+    ViewBag.Title = "_CreateEdit";
+}
+
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Game.GameName, @Resources.Domain.GameName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Game.GameName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Game.GameName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Game.Date, @Resources.Domain.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DateTimeEditorFor(model => model.Game.Date, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Game.Date, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Game.TrackId, @Resources.Domain.TrackName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Game.TrackId , Model.TrackSelectList, @Resources.Common.SelectOptionLabel, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Game.TrackId, "", new { @class = "text-danger" })
+        </div>
+    </div>

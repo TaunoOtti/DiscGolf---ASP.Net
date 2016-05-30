@@ -1,0 +1,89 @@
+﻿@model Web.Areas.User.ViewModels.UserGameDetailViewModel
+
+@{
+    ViewBag.Title = @Resources.Domain.GameId;
+}
+
+<h2>@Resources.Common.Details</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Game.Track.TrackName)
+            </th>
+            @if (Model.BasketsInTrack.Count != 0)
+            {
+                foreach (var item in Model.BasketsInTrack)
+                {
+                    <th>
+                        @Html.DisplayFor(model => item.BasketNr) - Par @Html.DisplayFor(model => item.Pars)<br/>
+                        @Html.DisplayFor(model => item.Distance)m
+                    </th>
+                }
+            }
+            else
+            {
+                for (int i = 0; i < Model.TotalBaskets; i++)
+                {
+                    <th>
+                        @(i+1)
+                    </th>
+                }
+            }
+
+           
+           
+            <th>
+                @Resources.Common.Total
+            </th>
+
+        </tr>
+
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => user.UserName)
+                </td>
+                @if (Model.BasketsInTrack.Count != 0)
+                {
+                    foreach (var item in Model.BasketsInTrack)
+                    {
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Scores.FirstOrDefault(x => x.BasketId == item.BasketId && x.PlayerInGame.UserId == user.Id).Throws) <br />
+                            @Html.DisplayFor((model => item.Scores.FirstOrDefault(x => x.BasketId == item.BasketId).ThrowStyle)) <br />
+                            @Html.DisplayFor((model => item.Scores.FirstOrDefault(x => x.BasketId == item.BasketId).Comment))
+                        </td>
+                    }
+                    <td>
+                        <strong>@Html.DisplayFor(t => t.Totalx.FirstOrDefault(y => y.Key == user.Id).Value)</strong>
+                    </td>
+                }
+                else
+                {
+                    for (int i = 0; i < Model.TotalBaskets; i++)
+                    {
+                        <td>
+                           
+                        </td>
+                    }
+                    <td>0</td>
+                }
+
+
+
+            </tr>
+        }
+
+    </table>
+</div>
+<div>
+    @Html.ActionLink(@Resources.Common.BackToList, "Index")
+</div>
+<div align="right">
+    @Html.ActionLink(@Resources.Common.Edit, "Edit", new { id = Model.Game.GameId})
+</div>
+
+

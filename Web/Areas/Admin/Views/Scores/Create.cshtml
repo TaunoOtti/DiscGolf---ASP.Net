@@ -1,0 +1,81 @@
+﻿@model Web.Areas.Admin.ViewModels.ScoreCreateEditViewModel
+
+@{
+    ViewBag.Title = @Resources.Common.Create;
+}
+
+<h2>@Resources.Domain.Score</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Score</h4>
+        <hr/>
+       @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Game.GameId, @Resources.Domain.GameId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.Game.GameName, Model.Game.GameName, htmlAttributes: new { @class = "control-label" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Track.TrackId, @Resources.Domain.TrackId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.Track.TrackId, Model.Track.TrackName, htmlAttributes: new { @class = "control-label" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Score.PlayerInGame.UserId, @Resources.Domain.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Score.PlayerInGame.UserId, Model.UserSelectList, @Resources.Common.SelectOptionLabel, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Score.PlayerInGame.UserId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Score.BasketId, @Resources.Domain.Basket, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Score.BasketId, Model.BasketSelectList, @Resources.Common.SelectOptionLabel, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Score.BasketId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Score.Throws, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Score.Throws, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Score.Throws, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Score.ThrowStyle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Score.ThrowStyle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Score.ThrowStyle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Score.Comment, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Score.Comment, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Score.Comment, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value= @Resources.Common.Create class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(@Resources.Common.BackToList, "Index")
+</div>

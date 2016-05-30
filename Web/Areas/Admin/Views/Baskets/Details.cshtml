@@ -1,0 +1,58 @@
+﻿@model Web.Areas.Admin.ViewModels.BasketsViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Basket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Basket.Track.TrackName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Basket.Track.TrackName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Basket.BasketNr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Basket.BasketNr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Basket.Distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Basket.Distance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Basket.Pars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Basket.Pars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Basket.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Basket.Comment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(@Resources.Common.Edit, "Edit", new { id = Model.Basket.BasketId }) |
+    @Html.ActionLink(@Resources.Common.BackToList, "Index")
+</p>

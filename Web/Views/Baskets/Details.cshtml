@@ -1,0 +1,58 @@
+﻿@model Domain.Basket
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Basket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Track.TrackName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Track.TrackName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BasketNr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BasketNr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BasketId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

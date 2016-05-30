@@ -1,0 +1,45 @@
+﻿@model Web.Areas.Admin.ViewModels.PlayerInGameIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink(@Resources.Common.CreateNew, "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PlayerInGames.FirstOrDefault().Game.GameName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlayerInGames.FirstOrDefault().User.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlayerInGames.FirstOrDefault().PlayerInGameId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.PlayerInGames) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game.GameName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlayerInGameId)
+        </td>
+        <td>
+            @Html.ActionLink(@Resources.Common.Edit, "Edit", new { id=item.PlayerInGameId }) |
+            @Html.ActionLink(@Resources.Common.Details, "Details", new { id=item.PlayerInGameId }) |
+            @Html.ActionLink(@Resources.Common.Delete, "Delete", new { id=item.PlayerInGameId })
+        </td>
+    </tr>
+}
+
+</table>

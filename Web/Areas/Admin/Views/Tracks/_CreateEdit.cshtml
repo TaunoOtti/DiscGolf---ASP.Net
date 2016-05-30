@@ -1,0 +1,21 @@
+﻿@model Web.Areas.Admin.ViewModels.TracksViewModel
+@{
+    ViewBag.Title = "_CreateEdit";
+}
+
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Track.TrackName, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Track.TrackName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Track.TrackName, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Track.TrackLocation, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Track.TrackLocation, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Track.TrackLocation, "", new { @class = "text-danger" })
+    </div>
+</div>
